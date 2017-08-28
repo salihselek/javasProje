@@ -1,5 +1,7 @@
 package org.arpit.java2blog.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +12,10 @@ import javax.persistence.Table;
 /*
  * This is our model class and it corresponds to Country table in database
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name="COUNTRY")
-public class Country{
+public class Country implements Serializable{
 	
 	@Id
 	@Column(name="id")

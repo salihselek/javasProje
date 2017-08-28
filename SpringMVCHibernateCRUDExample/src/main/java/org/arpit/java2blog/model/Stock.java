@@ -1,5 +1,7 @@
 package org.arpit.java2blog.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,9 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="STOCK")
-public class Stock {
+public class Stock implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private	int id;
@@ -18,7 +22,8 @@ public class Stock {
 	@ManyToOne
 	private
 	Product product;
-		
+	
+	@JsonIgnore
 	@ManyToOne
 	private
 	User user;

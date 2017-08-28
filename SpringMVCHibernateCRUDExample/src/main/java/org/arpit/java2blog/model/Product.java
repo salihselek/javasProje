@@ -1,5 +1,6 @@
 package org.arpit.java2blog.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
+public class Product implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,6 +26,7 @@ public class Product {
 	private int unitsInStock;
 	private int price;
 	
+	@JsonIgnore
 	@OneToMany
 	private
 	List<Stock> stock=new ArrayList<Stock>();
@@ -37,8 +42,7 @@ public class Product {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	
+	}	
 	
 	public int getPrice() {
 		return price;

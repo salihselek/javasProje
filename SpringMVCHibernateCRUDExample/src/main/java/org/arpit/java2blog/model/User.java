@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "USER")
 public class User {
@@ -19,8 +21,9 @@ public class User {
 	private	int id;
 	
 	private String userName;
+	@JsonIgnore
 	private String password;
-	
+
 	@OneToMany
 	private
 	List<Stock> stock=new ArrayList<Stock>();
